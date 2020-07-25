@@ -17,6 +17,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "tslint"
+            ],
+            "showCircularDependencies": false,
             "outputPath": "dist/teadmus",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -28,8 +32,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/scss/_index.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/scss"
+              ]
+            },
             "scripts": []
           },
           "configurations": {

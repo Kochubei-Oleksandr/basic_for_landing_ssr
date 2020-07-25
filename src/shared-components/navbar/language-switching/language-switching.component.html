@@ -1,0 +1,18 @@
+<div class="language-switching lang">
+  <p
+    [ngClass]="['lang__icon', 'lang__icon'+classDecorator]"
+    [matMenuTriggerFor]="menu"
+  >
+    {{getServiceLanguage()}}
+  </p>
+  <mat-menu #menu="matMenu">
+    <button
+      *ngFor="let item of getMenuItems()"
+      [ngClass]="{'lang--active': isMenuItemActive(item)}"
+      (click)="setServiceLanguage(item)"
+      mat-menu-item
+    >
+      <span class="lang--btn-text">{{item}}</span>
+    </button>
+  </mat-menu>
+</div>

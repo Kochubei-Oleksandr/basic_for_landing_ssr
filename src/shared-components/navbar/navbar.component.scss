@@ -1,0 +1,105 @@
+@import 'abstracts/constants';
+
+.navbar {
+  width: 100%;
+  box-shadow: 0 6px 15px -5px rgba(0,0,0,0.6);
+  &--sticky {
+    z-index: 999;
+    transition: 1s;
+    background-color: #fff;
+    position: fixed;
+  }
+  &--no-sticky {
+    z-index: 999;
+    margin-bottom: -50px;
+  }
+  &--no-landing {
+    background-color: #fff;
+  }
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    max-width: $max-width;
+    height: 50px;
+    margin: 0 auto;
+  }
+  &__section {
+    display: flex;
+    align-items: center;
+    .left-section {
+      &__title {
+        cursor: pointer;
+        font-size: 23px;
+        margin: 0 10px;
+        &--sticky {
+          color: $green;
+        }
+        &--no-sticky {
+          color: white;
+        }
+        &--no-landing {
+          color: $green;
+        }
+      }
+    }
+    .right-section {
+      &__lang {
+        margin-right: 10px;
+      }
+      &__auth {
+        color: #fff;
+        .auth {
+          &__wrapper {
+            display: flex;
+            align-items: center;
+          }
+          &__login {
+            cursor: pointer;
+            margin-right: 10px;
+            padding: 3px 9px;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 20px;
+            &--sticky {
+              border: 1px solid $black;
+              color: $black;
+            }
+            &--no-sticky {
+              border: 1px solid white;
+              color: white;
+            }
+            &--no-landing {
+              border: 1px solid $black;
+              color: $black;
+            }
+          }
+          &__registration, &__menu {
+            margin-right: 10px;
+            padding: 4px 9px;
+            border-radius: 4px;
+            cursor: pointer;
+            z-index: 99;
+            font-size: 14px;
+            line-height: 20px;
+            &--sticky {
+              color: white;
+              background-color: $green;
+            }
+            &--no-sticky {
+              color: $green;
+              background-color: white;
+            }
+            &--no-landing {
+              color: white;
+              background-color: $green;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.auth__menu--active {
+  background: $green;
+  color: white;
+}
