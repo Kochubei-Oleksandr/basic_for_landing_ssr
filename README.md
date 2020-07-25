@@ -44,3 +44,76 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 TODO:
 1) fix CircularDependencies for components
 2) fix allowedCommonJsDependencies for tslint
+
+Основные правила работы над проектом:
+1) Исспользуем существующую архитектуру для проектов компании
+2)По возможности исспользуем компоненты MaterialDesign от Angular (https://material.angular.io/) или существующие решения с других проектов компании или реализовываем свои (для уникального дизайна)
+3) Стараемся дробить большой компонент на независимые блоки для переиспользования их в других проектах
+4) Исспользуем техники написания надежного и правильно оформленного кода, ниже основные из них...
+5) шрифты(fonts), картинки(images), переводы(i18n) храним в директории assets/
+
+Правила работы с html и cscc:
+1) https://habr.com/ru/post/143452/
+2) https://habr.com/ru/company/alconost/blog/419095/
+
+Правила для работы с Angular:
+1) https://habr.com/ru/company/ruvds/blog/425661/
+2) https://habr.com/ru/company/ruvds/blog/425663/
+
+
+ДЛЯ ВЕРСТАЛЬЩИКА:
+
+Создание новых компонентов:
+1) создание директории с названием секции, например:
+A) для ПЕРЕИСПОЛЬЗУЕМЫХ компонентов - src/shared-components/navbar;
+B)для НЕпереиспользованных компонентов - src/components/landing.
+2) внутри директории создаем 3 файла:
+landing.component.html,
+landing.component.scss,
+landing.component.ts
+import {Component} from '@angular/core';
+@Component({
+  selector: 'landing',
+  templateUrl: './landing.component.html',
+  styleUrls: ['./landing.component.scss']
+})
+export class LandingComponent {
+  constructor() { }
+
+}
+3) *при необходимости дробим текущую секцию на более мелкие компоненты для возможности их переиспользования как в текущем или в будущих проектах
+4) регистрируем созданный компонент в src/app/app.module.ts. 
+А) Если компонент будет частью LandingPage (главная страница), тогда регистрируем его (LandingComponent) в массиве LANDING_MODULES.
+Б) Если компонент будет повторно НЕпереиспользованный, тогда регистрируем его (AppComponent) в массиве MAIN_COMPONENTS.
+В) Если компонент будет повторно переиспользованный, тогда регистрируем его (NavbarComponent) в массиве SHARED_COMPONENTS.
+
+Добавление марштура к выбранному компоненту:
+*Если для компонента нужен отдельный маршрут, например как тут для страницы блога (https://github.com/BLOG), то делаем следующее...
+1) Добавим название маршрута в интерфейс src/shared/interfaces/routing-names.interface.ts (например: home: string,).
+2) Добавим название маршрута в константу src/shared/constants/routing-names.const.ts (например: home: '',)
+5) Добавляем в файл src/app-routing.module.ts следующее значение, где путь бедем из ROUTING_NAMES и к нему указываем название компонента:
+{
+  path: ROUTING_NAMES.home,
+  component: LandingComponent,
+},
+6) Добавление компонента в нутри другого - например так <first-section></first-section>. first-section - это название компонента first-section.component.ts -> (selector: 'first-section').
+
+Добавление новых переводов:
+1) Основной язык текста  - английский, и работает по след. принципу: <p>{{'Menu' | translate}}</p>
+2) Добавляем перевод в каждый языковой файл, например в assest/i18n/ru.json - {"Menu": "Меню"} и в assest/i18n/en.json - {"Menu": "Menu"}
+
+Готовые компоненты для исспользования (src/shared-components):
+navbar - шапка для сайта
+pdf-modal-dialog - для отображения PDF
+progress-spinner - для отображение выполнения действия
+
+
+ПРОДВИНУТЫЙ УРОВЕНЬ:
+
+Основные сервисы:
+LanguageService - для работы с языковыми функциями
+LocalStorageService - для записи в LocalStorage
+
+Доп. правила:
+1) Создаем константы в (shared/constants) и добавляем к ним интерфейс в (shared/interfaces)
+4) общую логику scss выносим в app/scss

@@ -1,9 +1,6 @@
 import {Component, HostListener, Input, OnInit} from '@angular/core';
-import {LoginComponent} from '../../components/auth/login/login.component';
 import {MatDialog} from '@angular/material/dialog';
-import {RegistrationComponent} from '../../components/auth/registration/registration.component';
 import {Router} from '@angular/router';
-import {AuthService} from '../../shared/services/auth/auth.service';
 import {TranslateService} from '@ngx-translate/core';
 import {MENU_ITEMS} from '../../shared/constants/menu-items.const';
 import {IMenuItems} from '../../shared/interfaces/menu-items.interface';
@@ -22,7 +19,6 @@ export class NavbarComponent {
   constructor (
     private _router: Router,
     private _dialog: MatDialog,
-    private _authService: AuthService,
     private _translateService: TranslateService,
   ) { }
 
@@ -32,24 +28,10 @@ export class NavbarComponent {
       this.isSticky = window.pageYOffset >= 1;
     }
   }
-
-  isLoggedIn() {
-    return AuthService.isLoggedIn();
-  }
   getClassDecorator(mainClass: string): string {
     return this.isLanding
       ? this.isSticky ? (mainClass + '--sticky') : (mainClass + '--no-sticky')
       : (mainClass + '--no-landing');
-  }
-  openLoginDialog() {
-    this._dialog.open(LoginComponent, {
-      width: '350px'
-    });
-  }
-  openRegistrationDialog() {
-    this._dialog.open(RegistrationComponent, {
-      width: '444px'
-    });
   }
   goToHomePage() {
     this._router.navigate([ROUTING_NAMES.home]);

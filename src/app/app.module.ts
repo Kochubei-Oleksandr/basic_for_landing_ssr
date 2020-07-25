@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -29,19 +29,11 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 //app modules
 import { AppComponent } from './app.component';
-import {LoginComponent} from "../components/auth/login/login.component";
-import {RegistrationComponent} from "../components/auth/registration/registration.component";
 import {NavbarComponent} from "../shared-components/navbar/navbar.component";
 import {PdfModalDialogComponent} from "../shared-components/pdf-modal-dialog/pdf-modal-dialog.component";
 import {LanguageSwitchingComponent} from "../shared-components/navbar/language-switching/language-switching.component";
 import {ProgressSpinnerComponent} from "../shared-components/progress-spinner/progress-spinner.component";
-import {TokenInterceptor} from "../shared/interceptors/token.interceptor";
-import {ApiConfigInterceptor} from "../shared/interceptors/api-config.interceptor";
 import {LanguageService} from "../shared/services/language.service";
-import {InitialRequestsService} from "../shared/services/initial-requests.service";
-import {LogNotificationService} from "../shared/services/log-notification.service";
-import {ServerValidationFormService} from "../shared/services/server-validation-form.service";
-import {ReviewDialog} from "../shared-components/review-dialog/review-dialog.component";
 
 const LANDING_MODULES = [
   LandingComponent,
@@ -49,8 +41,6 @@ const LANDING_MODULES = [
 ];
 const MAIN_COMPONENTS = [
   AppComponent,
-  LoginComponent,
-  RegistrationComponent,
 
 ];
 const SHARED_COMPONENTS = [
@@ -58,26 +48,12 @@ const SHARED_COMPONENTS = [
   PdfModalDialogComponent,
   LanguageSwitchingComponent,
   ProgressSpinnerComponent,
-  ReviewDialog
 ];
 const SHARED_PIPES = [
 
 ];
 const SHARED_SERVICES = [
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptor,
-    multi : true
-  },
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: ApiConfigInterceptor,
-    multi : true
-  },
   LanguageService,
-  InitialRequestsService,
-  LogNotificationService,
-  ServerValidationFormService,
 ];
 const ANGULAR_MATERIAL_MODULES = [
   MatDialogModule,
