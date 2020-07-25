@@ -1,0 +1,19 @@
+{
+  "EMAIL_ERROR": "Введите корректный E-mail адресс",
+  "REQUIRED_ERROR": "Обязательное поле",
+  "MAX_ERROR": "Максимальное количество символов - {{number}}",
+
+  "Sign in": "Вход",
+  "Register": "Регистрация",
+  "Password": "Пароль",
+  "Confirmation password": "Пароль подтверждения",
+  "Passwords do not match": "Пароли не соответствуют",
+  "I agree to the terms of service": "Я согласен с условиями использования сервиса",
+  "Log out": "Выйти",
+  "Are you sure you want to go out?": "Вы уверены, что хотите выйти?",
+  "Dont have an account yet?": "Еще нет аккаунта?",
+  "Have an account?": "Есть аккаунт?",
+  "User agreement": "Пользовательское соглашение",
+  "Privacy": "Конфиденциальность",
+  "Menu": "Меню"
+}

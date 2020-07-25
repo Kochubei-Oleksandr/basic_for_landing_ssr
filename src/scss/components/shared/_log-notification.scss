@@ -1,0 +1,13 @@
+@import "abstracts/_constants";
+
+snack-bar-container {
+  &.error {
+    background-color: $red;
+  }
+  &.warn {
+    background-color: $orange;
+  }
+  &.success {
+    background-color: $green;
+  }
+}

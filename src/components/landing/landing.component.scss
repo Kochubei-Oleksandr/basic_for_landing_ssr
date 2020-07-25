@@ -1,0 +1,16 @@
+@import 'abstracts/constants';
+@import 'abstracts/mixins';
+
+.landing {
+  &__section {
+    &--second {
+      height: 100vh;
+      margin-top: -74px;
+      @include horizontal-gradient($dark-green, $green);
+    }
+    &--third {
+      height: 100vh;
+      background-color: green;
+    }
+  }
+}

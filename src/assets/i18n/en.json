@@ -1,0 +1,19 @@
+{
+  "EMAIL_ERROR": "Please enter a valid email address",
+  "REQUIRED_ERROR": "Required field",
+  "MAX_ERROR": "Maximum number of characters - {{number}}",
+
+  "Sign in": "Sign in",
+  "Register": "Register",
+  "Password": "Password",
+  "Confirmation password": "Confirmation password",
+  "Passwords do not match": "Passwords do not match",
+  "I agree to the terms of service": "I agree to the terms of service",
+  "Log out": "Log out",
+  "Are you sure you want to go out?": "Are you sure you want to go out?",
+  "Dont have an account yet?": "Don't have an account yet?",
+  "Have an account?": "Have an account?",
+  "User agreement": "User agreement",
+  "Privacy": "Privacy",
+  "Menu": "Menu"
+}

@@ -1,0 +1,39 @@
+@import 'abstracts/constants';
+
+.registration {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    .form {
+      &__item {
+
+      }
+      &__button {
+        margin-top: 10px;
+      }
+      &__checkbox {
+        margin: 5px 0;
+      }
+      &__document-links {
+        display: flex;
+        margin: 5px 0;
+        .documents {
+          &__item {
+            cursor: pointer;
+            color: $green;
+            &--first {
+              margin-right: 15px;
+            }
+          }
+        }
+      }
+      &__login-text {
+        margin-top: 10px;
+      }
+      &__login-link {
+        cursor: pointer;
+        color: $green;
+      }
+    }
+  }
+}

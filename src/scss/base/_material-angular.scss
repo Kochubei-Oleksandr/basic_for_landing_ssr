@@ -1,0 +1,116 @@
+@import '../abstracts/constants';
+@import '~@angular/material/theming';
+@include mat-core();
+
+$dark-primary-text: white;
+$light-primary-text: white;
+
+$custom-mat-green: (
+  100: $green,
+  200: $green,
+  300: $green,
+  400: $green,
+  500: $green,
+  600: $green,
+  700: $green,
+  800: $green,
+  900: $green,
+  A200: $green,
+  A500: $green,
+  A800: $green,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+$my-light-theme-foreground: (
+  base:              $black,
+  divider:           $dark-gray,
+  dividers:          $dark-gray,
+  disabled:          $gray,
+  disabled-button:   $black,
+  disabled-text:     $gray,
+  elevation:         $black,
+  hint-text:         $dark-gray,
+  secondary-text:    $dark-gray,
+  icon:              $dark-gray,
+  icons:             $dark-gray,
+  text:              $black,
+  slider-min:        $black,
+  slider-off:        $dark-gray,
+  slider-off-active: $dark-gray,
+);
+
+$my-light-theme-background: (
+  status-bar: $dark-gray,
+  app-bar:    $light-gray,
+  background: $light-gray,
+  hover:      $green,
+  card:       $light-gray,
+  dialog:     $light-gray,
+  disabled-button: $gray,
+  raised-button: $gray,
+  focused-button: $dark-green,
+  selected-button: $dark-green,
+  selected-disabled-button: $gray,
+  disabled-button-toggle: $gray,
+  unselected-chip: $gray,
+  disabled-list-option: $gray,
+);
+
+@function create-my-theme($primary, $accent, $warn: mat-palette($mat-red)) {
+  @return (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    is-dark: false,
+    foreground: $my-light-theme-foreground,
+    background: $my-light-theme-background,
+  );
+}
+
+$FrontEnd-primary: mat-palette($custom-mat-green);
+$FrontEnd-accent: mat-palette($custom-mat-green);
+$FrontEnd-warn: mat-palette($mat-red);
+
+$custom-theme: create-my-theme($FrontEnd-primary, $FrontEnd-accent, $FrontEnd-warn);
+
+@include angular-material-theme($custom-theme);
+
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+$custom-typography: mat-typography-config(
+  $font-family: 'Open Sans, Roboto, Helvetica Neue, sans-serif',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500)
+);
+
+// Override typography CSS classes (e.g., mat-h1, mat-display-1, mat-typography, etc.).
+@include mat-base-typography($custom-typography);
+
+// Override typography for a specific Angular Material components.
+@include mat-checkbox-typography($custom-typography);
+
+// Override typography for all Angular Material, including mat-base-typography and all components.
+@include angular-material-typography($custom-typography);
+
+@include mat-core($custom-typography);
+
+//Override mat-base-typography margin
+.mat-typography p {
+  margin: 0;
+}
+

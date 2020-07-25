@@ -1,0 +1,49 @@
+<div class="login">
+  <form class="login__form form" [formGroup]="loginFormGroup">
+
+    <mat-form-field class="form__item">
+      <input
+        matInput
+        placeholder="E-mail"
+        formControlName="email"
+      >
+      <mat-error *ngIf="loginFormGroup.hasError('email', 'email')">
+        {{ 'EMAIL_ERROR' | translate }}
+      </mat-error>
+      <mat-error *ngIf="loginFormGroup.hasError('required', 'email')">
+        {{ 'REQUIRED_ERROR' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form__item">
+      <input
+        matInput
+        placeholder="{{'Password' | translate}}"
+        formControlName="password"
+        type="password"
+      >
+      <mat-error *ngIf="loginFormGroup.hasError('required', 'password')">
+        {{ 'REQUIRED_ERROR' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      *ngIf="isRequestComplete(); else spinner"
+      (click)="submit()"
+      mat-raised-button
+      color="accent"
+      class="form__button"
+      [disabled]="!loginFormGroup.valid"
+    >
+      {{'Sign in' | translate}}
+    </button>
+
+    <p class="form__registration-text">{{'Dont have an account yet?' | translate}}
+      <span class="form__registration-link" (click)="openRegistrationDialog()">{{'Register' | translate}}</span>
+    </p>
+    <ng-template #spinner>
+      <progress-spinner [diameter]="50"></progress-spinner>
+    </ng-template>
+
+  </form>
+</div>

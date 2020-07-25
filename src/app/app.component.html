@@ -1,0 +1,13 @@
+<navbar
+  *ngIf="isHomeRoute()"
+  [isLanding]="isHomeRoute()"
+>
+</navbar>
+
+<navbar
+  *ngIf="!isHomeRoute()"
+  [isLanding]="isHomeRoute()"
+>
+</navbar>
+
+<router-outlet></router-outlet>
