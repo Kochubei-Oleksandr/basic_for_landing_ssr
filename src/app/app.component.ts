@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {LanguageService} from '../shared/services/language.service';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +7,7 @@ import {LanguageService} from '../shared/services/language.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor (
-    private _router: Router,
-    private _languageService: LanguageService,
-  ) {
-    _languageService.ngOnInit();
-  }
+  constructor (private _router: Router) { }
 
   isHomeRoute() {
     return this._router.url === '/';

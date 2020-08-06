@@ -40,6 +40,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 8) creating a directory (shared-components): navbar, pdf-modal-dialog, progress-spinner, review-dialog;
 9) creating the directive components: auth, landing;
 10 changing files in the app directory
+11) adding libraries for ssr and fixing files for project
 
 TODO:
 1) fix CircularDependencies for components
@@ -51,6 +52,7 @@ TODO:
 3) Стараемся дробить большой компонент на независимые блоки для переиспользования их в других проектах
 4) Исспользуем техники написания надежного и правильно оформленного кода, ниже основные из них...
 5) шрифты(fonts), картинки(images), переводы(i18n) храним в директории assets/
+6) стараемся делать анимации / компоненты с минимальной зависимостью от JS, для корректного отображения при SSR
 
 Правила работы с html и cscc:
 1) https://habr.com/ru/post/143452/
@@ -112,7 +114,7 @@ progress-spinner - для отображение выполнения дейст
 
 Основные сервисы:
 LanguageService - для работы с языковыми функциями
-LocalStorageService - для записи в LocalStorage
+BrowserLocalStorageService - для работы с LocalStorage
 
 Доп. правила:
 1) Создаем константы в (shared/constants) и добавляем к ним интерфейс в (shared/interfaces)
